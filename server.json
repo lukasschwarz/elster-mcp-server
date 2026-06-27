@@ -1,0 +1,33 @@
+{
+  "$schema": "https://registry.modelcontextprotocol.io/schemas/server.json",
+  "name": "io.github.lukasschwarz/elster-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for the German tax portal ELSTER. Submit UStVA, prepare EUER/ESt, sync inbox + history via Puppeteer.",
+  "repository": "https://github.com/lukasschwarz/elster-mcp-server",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "elster-mcp-server",
+      "version": "0.1.0",
+      "transport": "stdio",
+      "command": "npx",
+      "arguments": ["-y", "elster-mcp-server"],
+      "environmentVariables": [
+        { "name": "ELSTER_CONFIG_PATH", "description": "Path to a config.json that holds all settings below. Recommended.", "required": false },
+        { "name": "ELSTER_PFX_PATH", "description": "Absolute path to your ELSTER certificate (.pfx).", "required": false },
+        { "name": "ELSTER_PASSWORD", "description": "Password for the .pfx certificate.", "required": false, "secret": true },
+        { "name": "ELSTER_TAX_NUMBER", "description": "Your Steuernummer (in the format issued by your Finanzamt).", "required": false },
+        { "name": "ELSTER_STATE_CODE", "description": "Two-digit ELSTER federal-state code of your Finanzamt.", "required": false },
+        { "name": "ELSTER_NAME", "description": "Last name / company name.", "required": false },
+        { "name": "ELSTER_FIRST_NAME", "description": "First name.", "required": false },
+        { "name": "ELSTER_STREET", "description": "Street.", "required": false },
+        { "name": "ELSTER_HOUSE_NUMBER", "description": "House number.", "required": false },
+        { "name": "ELSTER_ZIP", "description": "ZIP code.", "required": false },
+        { "name": "ELSTER_CITY", "description": "City.", "required": false },
+        { "name": "ELSTER_COUNTRY", "description": "ISO country code, default DE.", "required": false },
+        { "name": "ELSTER_HEADLESS", "description": "Run Chromium headless (true/false). Default true.", "required": false },
+        { "name": "ELSTER_EST_SKIP_EUR", "description": "If 1, skip the EUER pre-hook in ESt sessions.", "required": false }
+      ]
+    }
+  ]
+}
