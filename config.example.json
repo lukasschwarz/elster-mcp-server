@@ -1,0 +1,44 @@
+{
+  "$comment": "ELSTER MCP Server - example config. Copy to config.json and fill in YOUR values. Any value can also be supplied via an environment variable (ELSTER_PFX_PATH, ELSTER_PASSWORD, ELSTER_TAX_NUMBER, ELSTER_STATE_CODE, ELSTER_NAME, ELSTER_FIRST_NAME, ELSTER_STREET, ELSTER_HOUSE_NUMBER, ELSTER_ZIP, ELSTER_CITY, ELSTER_COUNTRY, ELSTER_DOWNLOAD_DIR, ELSTER_SCREENSHOT_DIR, ELSTER_HEADLESS, ELSTER_EST_SKIP_EUR). Env vars take precedence over this file.",
+
+  "auth": {
+    "pfxPath": "",
+    "password": ""
+  },
+
+  "taxpayer": {
+    "$taxNumberComment": "Steuernummer in the format your Finanzamt issued it (with or without slashes).",
+    "taxNumber": "",
+    "$stateCodeComment": "Two-digit ELSTER federal-state code of your Finanzamt. Look up the current code list in the official ELSTER documentation (https://www.elster.de). Example range: two-digit string like '11' or '90'.",
+    "stateCode": "",
+    "name": "",
+    "firstName": "",
+    "street": "",
+    "houseNumber": "",
+    "zip": "",
+    "city": "",
+    "country": "DE"
+  },
+
+  "runtime": {
+    "downloadDir": "./downloads",
+    "screenshotDir": "./screenshots",
+    "headless": true,
+    "browserArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--window-size=1280,1024"
+    ]
+  },
+
+  "ustva": {
+    "$comment": "Reverse-Charge supplier patterns (§13b UStG). region=EU -> KZ 46/47, region=NON_EU -> KZ 73/74. Vorsteuer always KZ 67. Patterns are case-insensitive JS regexes matched against contactName / description.",
+    "reverseChargeSuppliers": []
+  },
+
+  "est": {
+    "skipEurPreHook": false
+  }
+}

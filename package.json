@@ -1,0 +1,49 @@
+{
+  "name": "elster-mcp-server",
+  "version": "0.1.0",
+  "description": "Model Context Protocol (MCP) server for ELSTER (German tax portal) automation via Puppeteer. Submit UStVA, prepare EUER/ESt, sync inbox and history.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "elster-mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "elster",
+    "ustva",
+    "euer",
+    "est",
+    "tax",
+    "steuer",
+    "finanzamt",
+    "germany",
+    "puppeteer",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "puppeteer": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "config.example.json"
+  ]
+}

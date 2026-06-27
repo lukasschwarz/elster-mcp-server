@@ -1,0 +1,12 @@
+{
+  "$comment": "Add this entry to ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%\\Claude\\claude_desktop_config.json (Windows). Recommended setup: keep all secrets in a config.json next to the binary and only reference its path here.",
+  "mcpServers": {
+    "elster": {
+      "command": "node",
+      "args": ["/absolute/path/to/elster-mcp-server/dist/index.js"],
+      "env": {
+        "ELSTER_CONFIG_PATH": "/absolute/path/to/elster-mcp-server/config.json"
+      }
+    }
+  }
+}

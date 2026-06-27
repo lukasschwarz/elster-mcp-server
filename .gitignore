@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.log
+.env
+.env.local
+config.json
+*.pfx
+*.p12
+exports/
+screenshots/
+downloads/
+.DS_Store
+.idea/
+.vscode/
+*.tsbuildinfo
