@@ -3,13 +3,35 @@
 A **Model Context Protocol (MCP) server** that lets Claude (or any MCP-capable client)
 drive the German tax portal [ELSTER](https://www.elster.de) via Puppeteer.
 
-> ⚠️ **Disclaimer**
-> This project automates a real interaction with the German tax authority.
-> You are solely responsible for the data you submit.
-> The `elster_ustva_*` tools are the only ones that actually transmit data,
-> and they always pause for an explicit confirmation step before doing so.
-> EÜR and ESt tools never submit — they prepare the form and let you review
-> in the ELSTER portal yourself.
+---
+
+## ⚖️ Legal Notice / Rechtlicher Hinweis
+
+**English**
+
+- This project is an **experimental, community-built tool**. It is **not affiliated with, endorsed by, or supported by** the Bundesministerium der Finanzen, the ELSTER project, or any tax authority.
+- The official, supported way to submit tax data programmatically is the **ERiC library** (registration as a software vendor required). This tool instead automates the public ELSTER **web portal** with a real user session — the same path a human user takes — using credentials YOU provide.
+- The official ELSTER **terms of use ("Nutzungsbedingungen")** may restrict automated access to the portal. Whether your specific use is permitted is **your responsibility to verify** before running this software.
+- **Use at your own risk.** The author(s) provide this software **AS IS, WITHOUT WARRANTY OF ANY KIND** (see [LICENSE](LICENSE)). The author(s) **accept NO liability** for incorrect tax submissions, account suspensions, missed deadlines, lost data, or any other consequences arising from the use of this software.
+- This project is **not tax advice** (no "Hilfeleistung in Steuersachen" in the sense of § 2 StBerG). If you are unsure whether a submission is correct, consult a *Steuerberater*.
+- Operators using this software in a **commercial context** (e.g. submitting on behalf of third parties) may be subject to the German *Steuerberatungsgesetz* and must verify their own licensing situation.
+
+**Deutsch**
+
+- Dieses Projekt ist ein **experimentelles, von der Community gebautes Werkzeug**. Es ist **weder vom Bundesministerium der Finanzen noch vom ELSTER-Projekt noch von einer Finanzbehörde unterstützt, autorisiert oder geprüft**.
+- Der offizielle, vom BMF unterstützte Weg zur programmatischen Übermittlung von Steuerdaten ist die **ERiC-Bibliothek** (Registrierung als Softwarehersteller erforderlich). Dieses Tool nimmt stattdessen den Weg über das öffentliche **ELSTER-Webportal** — denselben Weg, den ein menschlicher Nutzer per Browser geht — mit Zertifikatsdaten, die DU bereitstellst.
+- Die offiziellen **ELSTER-Nutzungsbedingungen** können automatisierten Zugriff auf das Portal einschränken oder verbieten. Es liegt **in deiner alleinigen Verantwortung** zu prüfen, ob dein konkreter Anwendungsfall erlaubt ist, bevor du dieses Tool nutzt.
+- **Nutzung auf eigenes Risiko.** Die Autor:innen stellen die Software **OHNE JEGLICHE GEWÄHRLEISTUNG** bereit (siehe [LICENSE](LICENSE)). Die Autor:innen übernehmen **keine Haftung** für fehlerhafte Steuerübermittlungen, gesperrte Konten, versäumte Fristen, Datenverluste oder sonstige Folgen aus der Nutzung dieser Software.
+- Dieses Projekt ist **keine Steuerberatung** im Sinne des § 2 StBerG. In Zweifelsfällen ist ein:e Steuerberater:in zu konsultieren.
+- Wer diese Software **gewerblich** einsetzt (z.B. Übermittlung im Auftrag Dritter), unterliegt unter Umständen dem Steuerberatungsgesetz und muss seine Berechtigung selbst sicherstellen.
+
+**Practical safeguards built into the tool**
+
+- The only tool that actually transmits data is `elster_ustva_confirm` — it requires an **explicit second call** after `elster_ustva_start` has paused at `AWAITING_CONFIRM`. Nothing is sent without that second confirmation.
+- The EÜR and ESt tools **never submit**. They only fill the form up to "Prüfen" and stop, so you review and submit yourself in the ELSTER portal.
+- All sync / history / inbox tools are read-only and never modify state on the ELSTER side.
+
+---
 
 ## Features
 
